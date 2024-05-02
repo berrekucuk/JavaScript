@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="">Left</label>
+        <input type="text" id="number">
+    </div>
+    <hr>
+    <div>
+        <img id="image" width="100" height="100" src="https://images.petlebi.com/v7/_ptlb/up/gallery/tavsan-kafesinin-boyutlari-ve-tasarimi-nasil-olmali-8065.jpg" alt="">
+    </div>
+    <div>
+        <button onclick="go()">Go</button>
+    </div>
+</body>
+<script>
+    var total = 0
+    function go(){
+        var left = document.getElementById('number').value
+        total = total + Number(left)
+        document.getElementById('image').style.marginLeft = total + 'px'
+    }
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="">Number</label>
+        <input type="text" id="number">
+    </div>
+    <div>
+        <button onclick="hesapla()">Karesini Yaz</button>
+    </div>
+</body>
+<script>
+    //butona basığında inputa girilen sayının karesini lsın ve consola yazsın.
+
+    function hesapla(){
+        var data =  document.getElementById('number').value //txtnumber.text
+        var sonuc = data * data
+        alet(sonuc)
+    }
+</script>
+</html>
