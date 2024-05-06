@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 40px; /* Kutular arasında eşit aralık bırakmamızı sağlar.   */
+    }
+    .card{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;  
+      align-items: center;
+    } 
+    .box{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        position: relative;
+    }
+    .box1{
+        background-color: red;
+        right: 0;
+        transition: right .5s;
+    }
+    .box2{
+        background-color: green;
+        bottom: 0;
+        transition: bottom .5s;
+    }
+    .box3{
+        background-color: blue;
+        transition: transform 2s;
+    }
+    .box4{
+        background-color:  yellow;
+        transition: transform 2s;
+    }
+
+
+    button{
+        width: 150px;
+        padding: 10px 15px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="card">
+            <div id="box1" class="box box1"></div>
+            <button onclick="rightToLeft()">Sola Getir</button>
+        </div>
+        <div class="card">
+            <div class="box box2"></div>
+            <button onclick="bottomToTop()">Yukarı getir</button>
+        </div>
+        <div class="card">
+            <div class="box box3"></div>
+            <button onclick="rotate360()">Döndür</button>
+        </div>
+        <div class="card">
+            <div class="box box4"></div>
+            <button onclick="scaleUp()">Büyüt</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    // 1) 3 tane box oluşturalım ve  bunları flex kullanarak sayfanın ortasınasabitleyelim.
+    // 2) Boxlarımız altlaında birer buton içersin. Her bir buton kendi box'ı için tanımanmış olsun.
+    // 3) İlk box sağdan sola hareket etsin.
+    // 4) İkinci box aşağıdan yukarıya hareket etsin
+    // 5) Üçüncü box ise kendi etrafında bir tur atsın.
+    // 6) Son box ise  scale olarak boyutu büyüsün.
+    // 7) Tüm click event geçişlerini transition geçiş efektiyle hareketini görelim.
+    
+    function rightToLeft(){        
+        document.getElementById('box1').style.right = 40 +'px'        
+    }
+
+    function bottomToTop(){
+        document.querySelector('.box2').style.bottom = 40 + 'px'
+        setTimeout(function(){
+            document.querySelector('.box2').style.bottom = 0 + 'px'
+        },1000)
+    }
+
+    //Tek bir kere işlemesi
+    function rotate360(){
+        document.querySelector('.box3').style.transform = 'rotate(90deg)'
+    }
+
+    // Tekrarlı işlemesi
+    let degree = 90
+    function rotate360Loop(){
+        degree = degree + 90
+        document.querySelector('.box3').style.transform = 'rotate(' + degree + 'deg)'
+    }
+    // btn.addEventsListener("click",function(){
+    //     document.querySelector('.box3').style.transform = 'rotate(90deg)'
+    // })
+
+    function scaleUp(){
+        document.querySelector('.box4').style.transform = 'scale(1.3)'
+    }
+
+</script>
+</html>

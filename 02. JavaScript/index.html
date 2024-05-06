@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .container #baslik.red{
+            color: red;
+        } */
+        button{
+            padding: 20px;
+            background-color: aqua;
+            border-top-left-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 id="baslik" class="red">Başlık</h1>
+        </div>
+    
+    <p class="paragraf">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
+    <p class="paragraf"></p>
+    <button onclick="dynamicColor()">Sayfa Butonu</button>
+    </div>
+</body>
+<script>
+    //let paragraf = document.getElementById("baslik")
+    //let paragraf = document.getElementsByClassName("paragraf")
+
+    const baslik = document.getElementById('baslik')
+
+    baslik.style.color = 'red'
+
+    let paragraf1 =document.getElementsByClassName('paragraf')
+    let paragraf2 = document.querySelector("div > #baslik.red")
+
+    const btn = document.querySelector("button")
+
+    btn.style.borderTopLeftRadius = '30px'
+    btn.style.backgroundColor = 'green' 
+
+    // 0 ile 101 arasında bir rakam getir.
+    function random(number){
+        return Math.floor(Math.random() * (number + 1))
+    }
+
+    //YÖNTEM 1 : onclick HTML attribute event kullanım  metodu
+    function dynamicColor(){
+        const dynamicColor = 'rgb(' + random(255) +','  + random(255) + ','+ random(255) +')'
+        baslik.style.backgroundColor = dynamicColor
+    }
+
+    //Bu kodda butona bir kere bastığımızda aynı rengi görmüş oluruz.
+    const changeColor = 'rgb(' + random(255) +','  + random(255) + ','+ random(255) +')'
+
+    //YÖNTEM 2 : Event listener ile kullanım metodu
+    // btn.addEventListener("click",function(){
+    //     //alert("Buton tıklandı")
+    //     console.log(random())
+
+    //     //Buradaki kodda ise butona  her bastığımızda  farklı bir renkle kaşılaşabiliriz.
+    //     const dynamicColor = 'rgb(' + random(255) +','  + random(255) + ','+ random(255) +')'
+
+    //      btn.style.backgroundColor = changeColor
+    //      baslik.style.backgroundColor = changeColor
+    // })
+</script>
+</html>

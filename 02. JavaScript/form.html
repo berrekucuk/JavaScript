@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" name="name" placeholder="Adınızı  giriniz">
+        <input type="number" name="phone" placeholder="Telefon numarınızı giriniz" >
+
+        <label for="female">
+            <input type="radio" name="gender" id="female"> Kadın
+        </label>
+
+        <label for="male">
+            <input type="radio" name="gender" id="male"> Erkek
+        </label>
+
+        <select name="iller" id="iller">
+            <option value="1">İstanbul</option>
+            <option value="2">Ankara</option>
+            <option value="3">İzmir</option>
+        </select>
+
+        <!-- submit olan buton otomatik gönderir -->
+        <button type="submit">Gönder</button>
+    </form>
+
+    <div id="output"></div>
+    
+</body>
+<script>
+    const form = document.getElementById('form')
+    const output = document.getElementById('output')
+    const gender = document.getElementById('female')
+    const iller = document.getElementById('iller')
+
+    form.addEventListener('submit', function(event){
+        event.preventDefault()
+
+        const formData  =new FormData(event.target)
+        const name = formData.get('name')
+        output.textContent = `Merhaba  ${name} Formunuz gönderilmiştir.`
+    })
+
+    gender.addEventListener('change', function(){
+        alert('Cinsiyet seçildi.')
+    })
+
+    iller.addEventListener('change', function(){
+        output.textContent = `Merhaba ${e.target.value} formunuz gönderilmiştir.`
+    })
+</script>
+</html>
