@@ -1,0 +1,9 @@
+Pure JavaScript : JavaScript olduğu haliyle yani herhangi bir kütüphane ve framework eklemeden kullandığımız temel düzey JavaScripttir.
+
+JavaScript Selectors (Seçiciler) : HTML elementlerini JavaScript yoluyla seçmemize yarar. Bunları seçip işlem yapabilir ya da değişkenlere atayabiliriz.
+
+JavaScript DOM (Document Object Model)
+
+JavaScript Events : Sayfa içinde interaktif yani kullanıcının etkileşime geçebileceği aksiyonları yönetmek için kullandığımız olaylar.
+
+!!! Camel Caising : JavaScript le CSS kodlarını yönetirken birden çok kelime içeren CSS kodları tire (-) işareti ile ayrılırken, JavaScript de kelimeleri birleşik ve her bir kelimenin baş harfini büyük olarak kullanırız.
