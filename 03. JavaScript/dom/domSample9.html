@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box{
+            width: 300px;
+            height: 300px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="box"></div>
+    </div>
+</body>
+<script>
+    var colors = ["red","yellow","gray","orange","brown","tomato","white","green","black","blue","aqua"]
+
+    setInterval(() => {
+        //Saniyede 1 yukarıdaki diziden random bir renk seçeceğim.
+        var randomColor = Math.floor(Math.random() * 11)
+        document.getElementById('box').style.backgroundColor = colors[randomColor]
+    },1000)
+</script>
+</html>
