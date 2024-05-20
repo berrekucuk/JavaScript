@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .product .box {
+            width: 200px;
+            height: 200px;
+            background-color: #f4f4f4;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+        .box h2 {
+            color: #333;
+        }
+
+        .box p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="addCategory.html">Add Category</a></li>
+        </ul>
+    </nav>
+    <h1>PRODUCTS</h1>
+    <div class="product">
+        <!-- <div class="box">
+            <h2>Name</h2>
+            <p>Unit Price</p>
+            <p>Unit In Stock</p>
+        </div> -->
+    </div>
+    <hr>
+    <footer>
+        &copy; 2020 
+    </footer>
+</body>
+<script>
+
+    fetch("https://northwind.vercel.app/api/products")
+        .then(res => res.json()) //Responseda bana gelen body'i okuyorum.
+        .then( data => {
+
+            data.forEach(item => {
+                var divElement = document.createElement("div")
+                divElement.className = "box"
+
+                divElement.innerHTML =`
+                    <h2>${item.name}</h2>
+                    <p>Unit Price : $${item.unitPrice}</p>
+                    <p>Unit In Stock : ${item.unitsInStock}</p>
+                `
+                document.querySelector(".product").appendChild(divElement)
+            });
+        })
+</script>
+</html>

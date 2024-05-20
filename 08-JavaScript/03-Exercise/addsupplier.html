@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }       
+
+        .supplier {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .supplier div {
+            margin: 10px;
+        }
+
+        .supplier label {
+            display: block;
+        }
+
+        .supplier input {
+            width: 300px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .supplier button {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="addsupplier.html">Add Supplier</a></li>            
+        </ul>
+    </nav>
+    <h1>ADD SUPPLIER PAGE</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+
+    <div class="supplier">
+        <div>
+            <label for="">Company Name:</label>
+            <input type="text" id="companyName">
+        </div>
+        <div>
+            <label for="">Contact Name:</label>
+            <input type="text" id="contactName">
+        </div>
+        <div>
+            <button onclick="add()">Add</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    function add(){
+        let companyName = document.getElementById("companyName").value 
+        let contactName = document.getElementById("contactName").value 
+
+        let newSupplier = {
+            companyName:companyName,
+            contactName:contactName
+        }
+
+        fetch("https://northwind.vercel.app/api/suppliers",{
+            method:"POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(newSupplier)
+        })
+        .then(res =>{
+            console.log("Response ",res)
+            alert("Supplier başarıyla eklendi!")
+        })
+    }
+</script>
+</html>

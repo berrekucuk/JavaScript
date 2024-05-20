@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .box{
+            margin: 10px;
+        }
+
+        .box input {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .box button {
+            width: 80px;
+            padding: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .country {
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column;
+        }
+
+        .country h3 {
+            margin: 10px;
+        }
+
+        .country span {
+            color: rgb(123, 1, 1);
+        }
+    </style>
+</head>
+<body>
+  <div class="box">
+    <div>
+        <label for="">Country Name </label>
+        <input type="text" id="countryName">        
+    </div>
+    <div>
+        <button onclick="getAll()">Get</button>
+    </div>
+    <div>
+        
+    </div>
+  </div>
+  <div class="country">
+    <img id="image" src="" alt="" style="width: 350px; height: 300px;">
+    <h3>Description : <span id="imageDescription"></span></h3>
+    <h3>Name : <span id="name"></span></h3>
+    <h3>Region : <span id="region"></span></h3>
+    <h3>Capital : <span id="capital"></span></h3>
+    <h3>Borders :<span id="borders"></span></h3>
+    <h3>Population : <span id="population"></span></h3>
+  </div>
+
+</body>
+<script>
+    function getAll(){
+        let countryName = document.getElementById("countryName").value.toLowerCase()
+
+        fetch("https://restcountries.com/v3.1/name/" + countryName)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("image").src = data[0].flags.png
+            document.getElementById("imageDescription").innerHTML = data[0].flags.alt
+            document.getElementById("name").innerHTML = data[0].name.common
+            document.getElementById("region").innerHTML = data[0].region
+            document.getElementById("capital").innerHTML = data[0].capital
+            document.getElementById("borders").innerHTML = data[0].borders
+            document.getElementById("population").innerHTML = data[0].population
+
+        })
+        document.getElementById("countryName").value =""   
+    }
+</script>
+</html>
