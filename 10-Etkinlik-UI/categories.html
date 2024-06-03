@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+
+    </ul>
+</body>
+<script>
+    fetch("https://localhost:44341/api/Category")
+    .then(res => res.json())
+    .then(data =>{
+        data.forEach(element => {
+            let liElement = document.createElement("li")
+            liElement.innerHTML = element.name
+            document.querySelector("ul").appendChild(liElement)
+        });
+    })
+</script>
+</html>
